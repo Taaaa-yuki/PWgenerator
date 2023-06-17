@@ -1,0 +1,1 @@
+void generate_password(char* password, int length);
