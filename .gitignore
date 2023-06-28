@@ -1,1 +1,3 @@
-password_generator
+password_generator/password_generator.o
+color_util/color_util.o
+my_program

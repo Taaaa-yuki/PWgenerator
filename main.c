@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "password_generator.h"
+#include "password_generator/password_generator.h"
+#include "color_util/color_util.h"
 
 int main() {
     int options;
@@ -13,21 +14,20 @@ int main() {
     printf("選択: ");
     scanf("%d", &options);
 
-    if (options < 0 || options > 2) {
+    if (options < 0 || options > 2) {               // 0, 1, 2以外の数字が入力された場合は終了
         printf("無効な選択です。\n");
         return 0;
-    } // 0, 1, 2以外の数字が入力された場合は終了
+    }
 
     printf("パスワードの長さを入力してください: ");
-    scanf("%d", &length); // パスワードの長さを入力
+    scanf("%d", &length);                           // パスワードの長さを入力
 
-    char* password = malloc(length + 1); // パスワードの長さ分のメモリを確保
+    char* password = malloc(length + 1);            // パスワードの長さ分のメモリを確保
 
-    generate_password(password, options, length); // パスワードの生成
+    generate_password(password, options, length);   // パスワードの生成
 
-    printf("\x1b[32m");
-    printf("生成されたパスワード: %s\n", password);
-    printf("\x1b[0m");
+    printf("生成されたパスワード: ");
+    print_colored_text(password, COLOR_GREEN);      // パスワードを緑色で表示
     
     return 0;
 }
