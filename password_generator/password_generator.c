@@ -15,6 +15,9 @@ void generate_password(char* password, int options, int length) {
         case 2:
             random_alphanumeric(password, length);
             break;
+        case 3:
+            random_alphabet_mix(password, length);
+            break;
         default:
             printf("無効な選択です。\n");
             return;
@@ -61,4 +64,22 @@ void random_alphanumeric(char* alphanumeric, int length) {
     }
 
     alphanumeric[length] = '\0'; // 文字列の終端を指定
+}
+
+
+// アルファベットの大文字と小文字と数字の混合のパスワードを生成する関数
+void random_alphabet_mix(char* alphabet_mix, int length) {
+    srand(time(NULL)); // 乱数シードを初期化
+
+    for (int i = 0; i < length; i++) {
+        int random = rand() % 2; // 0か1をランダムに選択
+
+        if (random == 0) {
+            alphabet_mix[i] = 'A' + rand() % 26; // A-Zのアルファベットをランダムに選択
+        } else {
+            alphabet_mix[i] = 'a' + rand() % 26; // a-zのアルファベットをランダムに選択
+        }
+    }
+
+    alphabet_mix[length] = '\0'; // 文字列の終端を指定
 }

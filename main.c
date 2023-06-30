@@ -11,10 +11,11 @@ int main() {
     printf("0: アルファベットのみ\n");
     printf("1: 数字のみ\n");
     printf("2: アルファベットと数字の混合\n");
+    printf("3: アルファベットの大文字と小文字と数字の混合\n");
     printf("選択: ");
     scanf("%d", &options);
 
-    if (options < 0 || options > 2) {               // 0, 1, 2以外の数字が入力された場合は終了
+    if (options < 0 || options > 3) {               // 0, 1, 2以外の数字が入力された場合は終了
         printf("無効な選択です。\n");
         return 0;
     }
